@@ -36,9 +36,9 @@ xdata, ydata = [], []
  
 def animate(i):
     x = i + 1
-    y = i + 2
+    y = i + 1
 
-    xdata.append(x)
+    xdata.append(i)
     ydata.append(y)
     line.set_data(xdata, ydata)
      

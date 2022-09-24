@@ -18,7 +18,7 @@
 # ani = animation.FuncAnimation(fig, work, interval=20, blit=True, save_count=50)
 # plt.show()
 
-
+# https://matplotlib.org/stable/tutorials/introductory/quick_start.html#sphx-glr-tutorials-introductory-quick-start-py
 import matplotlib.animation as animation
 import matplotlib.pyplot as plt
  

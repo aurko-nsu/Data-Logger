@@ -40,30 +40,31 @@ plt.ion() #Tell matplotlib you want interactive mode to plot live data
 cnt=0
 
 def makeFig(): #Create a function that makes our desired plot
-    plt.plot(pressure, 'ro-')
+    # plt.plot(pressure, 'ro-')
+    
     # plt.ylim(0,100)                                 #Set y min and max values
-    # plt.title('My Live Streaming Sensor Data')      #Plot the title
-    # plt.grid(True)                                  #Turn the grid on
-    # plt.ylabel('Temp F')                            #Set ylabels
-    # plt.plot(tempF, 'ro-', label='Degrees F')       #plot the temperature
-    # plt.legend(loc='upper left')                    #plot the legend
-    # plt2=plt.twinx()                                #Create a second y axis
+    plt.title('My Live Streaming Sensor Data')      #Plot the title
+    plt.grid(True)                                  #Turn the grid on
+    plt.ylabel('Temp F')                            #Set ylabels
+    plt.plot(tempF, 'ro-', label='Degrees F')       #plot the temperature
+    plt.legend(loc='upper left')                    #plot the legend
+    plt2=plt.twinx()                                #Create a second y axis
     # plt.ylim(93450,93525)                           #Set limits of second y axis- adjust to readings you are getting
-    # plt2.plot(pressure, 'b^-', label='Pressure (Pa)') #plot pressure data
-    # plt2.set_ylabel('Pressrue (Pa)')                    #label second y axis
-    # plt2.ticklabel_format(useOffset=False)           #Force matplotlib to NOT autoscale y axis
-    # plt2.legend(loc='upper right')                  #plot the legend
+    plt2.plot(pressure, 'b^-', label='Pressure (Pa)') #plot pressure data
+    plt2.set_ylabel('Pressrue (Pa)')                    #label second y axis
+    plt2.ticklabel_format(useOffset=False)           #Force matplotlib to NOT autoscale y axis
+    plt2.legend(loc='upper right')                  #plot the legend
     
 #https://toptechboy.com/python-with-arduino-lesson-11-plotting-and-graphing-live-data-from-arduino-with-matplotlib/
-arduinoData = serial.Serial('COM6', 9600) #Creating our serial object named arduinoData
+arduinoData = serial.Serial('COM14', 115200) #Creating our serial object named arduinoData
 while True: # While loop that loops forever
     while (arduinoData.inWaiting() == 0):
         pass
     aString = arduinoData.readline()
     bString = aString.decode('utf-8')
     dataArray = bString.split(',')
-    temp = float(dataArray[0])            #Convert first element to floating number and put in temp
-    P =    float(dataArray[1])            #Convert second element to floating number and put in P
+    temp = int(dataArray[0])            #Convert first element to floating number and put in temp
+    P =    int(dataArray[1])            #Convert second element to floating number and put in P
     print(dataArray[1])
     tempF.append(temp)                     #Build our tempF array by appending temp readings
     pressure.append(P)                     #Building our pressure array by appending P readings

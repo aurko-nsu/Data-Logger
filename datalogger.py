@@ -81,3 +81,4 @@ while True: # While loop that loops forever
 #     aString = arduinoData.readline().decode('utf-8')
 #     dataArray = aString.split(',')
 #     print(dataArray[0])
+

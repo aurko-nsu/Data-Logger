@@ -4,9 +4,15 @@ void setup() {
 
 void loop() {
   int a = analogRead(A0);
-  int b = 5;
+  int b = analogRead(A1);
+  int c = analogRead(A2);
+  int d = analogRead(A3);
+  Serial.print(a);
+  Serial.print(" , ");
   Serial.print(b);
   Serial.print(" , ");
-  Serial.println(a);
-  delay(500);
+  Serial.print(c);
+  Serial.print(" , ");
+  Serial.println(d);
+  delay(100);
 }
